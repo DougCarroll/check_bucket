@@ -1,27 +1,27 @@
-regions = {
-    "US_EAST_2" : "s3.us-east-2.amazonaws.com",                # US East (Ohio)            
-    "US_EAST_1" : "s3.us-east-1.amazonaws.com",                # US East (N. Virginia)     
-    "US_WEST_1" : "s3.us-west-1.amazonaws.com",                # US West (N. California)   
-    "US_WEST_2" : "s3.us-west-2.amazonaws.com",                # US West (Oregon)          
-    "AF_SOUTH_1" : "s3.af-south-1.amazonaws.com",              # Africa (Cape Town)        
-    "AP_EAST_1" : "s3.ap-east-1.amazonaws.com",                # Asia Pacific (Hong Kong)  
-    "AP_SOUTH_1" : "s3.ap-south-1.amazonaws.com",              # Asia Pacific (Mumbai)     
-    "AP_NORTHEAST_3" : "s3.ap-northeast-3.amazonaws.com",      # Asia Pacific (Osaka-Local)
-    "AP_NORTHEAST_2" : "s3.ap-northeast-2.amazonaws.com",      # Asia Pacific (Seoul)      
-    "AP_SOUTHEAST_1" : "s3.ap-southeast-1.amazonaws.com",      # Asia Pacific (Singapore)  
-    "AP_SOUTHEAST_2" : "s3.ap-southeast-2.amazonaws.com",      # Asia Pacific (Sydney)     
-    "AP_NORTHEAST_1" : "s3.ap-northeast-1.amazonaws.com",      # Asia Pacific (Tokyo)      
-    "CA_CENTRAL_1" : "s3.ca-central-1.amazonaws.com",          # Canada (Central)          
-    "CN_NORTH_1" : "s3.cn-north-1.amazonaws.com",              # China (Beijing)           
-    "CN_NORTHWEST_1" : "s3.cn-northwest-1.amazonaws.com",      # China (Ningxia)           
-    "EU_CENTRAL_1" : "s3.eu-central-1.amazonaws.com",          # Europe (Frankfurt)        
-    "EU_WEST_1" : "s3.eu-west-1.amazonaws.com",                # Europe (Ireland)          
-    "EU_WEST_2" : "s3.eu-west-2.amazonaws.com",                # Europe (London)           
-    "EU_SOUTH_1" : "s3.eu-south-1.amazonaws.com",              # Europe (Milan)            
-    "EU_WEST_3" : "s3.eu-west-3.amazonaws.com",                # Europe (Paris)            
-    "EU_NORTH_1" : "s3.eu-north-1.amazonaws.com",              # Europe (Stockholm)        
-    "SA_EAST_1" : "s3.sa-east-1.amazonaws.com",                # South America (Sao Paulo) 
-    "ME_SOUTH_1" : "s3.me-south-1.amazonaws.com",              # Middle East (Bahrain)     
-    "US_GOV_EAST_1" : "s3.us-gov-east-1.amazonaws.com",        # AWS GovCloud (US-East)    
-    "US_GOV_WEST_1" : "s3.us-gov-west-1.amazonaws.com",        # AWS GovCloud (US)         
+endpoint = {
+    "US_EAST_2" : "s3.us-east-2.amazonaws.com",             # : "US East (Ohio)",
+    "US_EAST_1" : "s3.us-east-1.amazonaws.com",             # : "US East (N. Virginia)",
+    "US_WEST_1" : "s3.us-west-1.amazonaws.com",             # : "US West (N. California)",
+    "US_WEST_2" : "s3.us-west-2.amazonaws.com",             # : "US West (Oregon)",
+    "AF_SOUTH_1" : "s3.af-south-1.amazonaws.com",           # : "Africa (Cape Town)",
+#    "AP_EAST_1" : "s3.ap-east-1.amazonaws.com",             # : "Asia Pacific (Hong Kong)",
+    "AP_SOUTH_1" : "s3.ap-south-1.amazonaws.com",           # : "Asia Pacific (Mumbai)",
+    "AP_NORTHEAST_3" : "s3.ap-northeast-3.amazonaws.com",   # : "Asia Pacific (Osaka-Local)",
+    "AP_NORTHEAST_2" : "s3.ap-northeast-2.amazonaws.com",   # : "Asia Pacific (Seoul)",
+    "AP_SOUTHEAST_1" : "s3.ap-southeast-1.amazonaws.com",   # : "Asia Pacific (Singapore)",
+    "AP_SOUTHEAST_2" : "s3.ap-southeast-2.amazonaws.com",   # : "Asia Pacific (Sydney)",
+    "AP_NORTHEAST_1" : "s3.ap-northeast-1.amazonaws.com",   # : "Asia Pacific (Tokyo)",
+    "CA_CENTRAL_1" : "s3.ca-central-1.amazonaws.com",       # : "Canada (Central)",
+    "CN_NORTH_1" : "s3.cn-north-1.amazonaws.com.cn",        # : "China (Beijing)",
+    "CN_NORTHWEST_1" : "s3.cn-northwest-1.amazonaws.com.cn",# : "China (Ningxia)",
+    "EU_CENTRAL_1" : "s3.eu-central-1.amazonaws.com",       # : "Europe (Frankfurt)",
+    "EU_WEST_1" : "s3.eu-west-1.amazonaws.com",             # : "Europe (Ireland)",
+    "EU_WEST_2" : "s3.eu-west-2.amazonaws.com",             # : "Europe (London)",
+    "EU_SOUTH_1" : "s3.eu-south-1.amazonaws.com",           # : "Europe (Milan)",
+    "EU_WEST_3" : "s3.eu-west-3.amazonaws.com",             # : "Europe (Paris)",
+    "EU_NORTH_1" : "s3.eu-north-1.amazonaws.com",           # : "Europe (Stockholm)",
+    "SA_EAST_1" : "s3.sa-east-1.amazonaws.com",             # : "South America (Sao Paulo)",
+    "ME_SOUTH_1" : "s3.me-south-1.amazonaws.com",           # : "Middle East (Bahrain)",
+    "US_GOV_EAST_1" : "s3.us-gov-east-1.amazonaws.com",     # : "AWS GovCloud (US-East)",
+    "US_GOV_WEST_1" : "s3.us-gov-west-1.amazonaws.com",     # : "AWS GovCloud (US)",
 }
