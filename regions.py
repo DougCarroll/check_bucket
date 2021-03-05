@@ -4,7 +4,7 @@ endpoint = {
     "US_WEST_1" : "s3.us-west-1.amazonaws.com",             # : "US West (N. California)",
     "US_WEST_2" : "s3.us-west-2.amazonaws.com",             # : "US West (Oregon)",
     "AF_SOUTH_1" : "s3.af-south-1.amazonaws.com",           # : "Africa (Cape Town)",
-#    "AP_EAST_1" : "s3.ap-east-1.amazonaws.com",             # : "Asia Pacific (Hong Kong)",
+    "AP_EAST_1" : "s3.ap-east-1.amazonaws.com",             # : "Asia Pacific (Hong Kong)",
     "AP_SOUTH_1" : "s3.ap-south-1.amazonaws.com",           # : "Asia Pacific (Mumbai)",
     "AP_NORTHEAST_3" : "s3.ap-northeast-3.amazonaws.com",   # : "Asia Pacific (Osaka-Local)",
     "AP_NORTHEAST_2" : "s3.ap-northeast-2.amazonaws.com",   # : "Asia Pacific (Seoul)",
