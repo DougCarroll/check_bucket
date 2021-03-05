@@ -27,7 +27,7 @@ def checkBuckets(protocol):
         text_results.see(END)
         text_results.update()
 
-    for ep in buckets.selected():
+    for ep in endpoints.selected():
         url = protocol + REGIONS.endpoint[ep] + '/' + entry_bucket.get()
         try:
             r = requests.get(url, timeout=(3.05))
@@ -50,41 +50,56 @@ def checkBuckets(protocol):
             displayResults(url, '', code, 'FAIL')
 
 if __name__ == '__main__':
+    #Create the window
     window = Tk()
     window.title("Check AWS Buckets")
 
-    buckets = CheckList(window, list(REGIONS.endpoint))
-    buckets.pack(side=LEFT, fill=Y)
-    buckets.config(relief=GROOVE, bd=2)
+    #Get the list of endpoints and create a CheckButton for each one
+    #TODO: Add vertical scroll bar
+    #TODO: Add select all and clear all button
+    endpoints = CheckList(window, list(REGIONS.endpoint))
+    endpoints.pack(side=LEFT, fill=Y)
+    endpoints.config(relief=GROOVE, bd=2)
 
+    #Get the list of options and create a CheckButton for each one
+    #For now, this only handling http and https
     options = CheckList(window,list(OPTIONS.protocol))
     options.pack(side=LEFT, fill=Y)
     options.config(relief=GROOVE, bd=2)
 
+    # When Check button is selected, or enter is pressed, check each
+    # selected endpoint to see if there is bucket with the specified name
+    #  event=None has to be added to handle pressing <Return>, not clicking the button
+    def check(event=None):
+        for protocol in options.selected():
+            checkBuckets(OPTIONS.protocol[protocol])
+    Button(window, text='Check', command=check).pack(side=LEFT)
+    window.bind('<Return>', check)
+
+    # resultsFrame is for displaying the results of the search/check
+    # TODO: Add button to clear text
     resultsFrame = Frame(window, relief=RAISED, bd=2)
-    resultsFrame.pack(side=LEFT, fill=Y)
+    resultsFrame.pack(side=LEFT, fill=BOTH, expand=True)
     resultsFrame.config(relief=GROOVE, bd=2)
 
     entry_bucket = Entry(master=resultsFrame, width=40) 
-    label_bucket = Label(master=resultsFrame, text="Bucket Name To Search For")
+    label_bucket = Label(master=resultsFrame, text="Bucket Name To Check For")
     entry_bucket.insert(0, 'public')
     label_bucket.pack(side=TOP, fill=NONE)
     entry_bucket.pack(side=TOP, fill=NONE)
 
-    text_results = Text(master=resultsFrame)
-    text_results_sb = Scrollbar(master=resultsFrame, orient="vertical", command=text_results.yview)
-    text_results.configure(yscrollcommand=text_results_sb.set)
-    text_results_sb.pack(side=RIGHT, fill=Y)
-    text_results.pack(side=LEFT, fill=BOTH)
-    text_results.tag_config('SUCCESS', background="light grey", foreground="green")
-    text_results.tag_config('FAIL', background="light grey", foreground="red")
-    text_results.tag_config('POSSIBLE', background="light grey", foreground="yellow")
-    text_results.tag_config('DOWN', background="red", foreground="white")
-
-    def check():
-        for protocol in options.selected():
-            checkBuckets(OPTIONS.protocol[protocol])
-
-    Button(window, text='Check', command=check).pack(side=RIGHT)
+    text_results = Text(master=resultsFrame, selectbackground="grey", wrap="none")
+    text_results_vsb = Scrollbar(master=resultsFrame, orient="vertical", command=text_results.yview)
+    text_results_hsb = Scrollbar(master=resultsFrame, orient="horizontal", command=text_results.xview)
+    text_results.configure(yscrollcommand=text_results_vsb.set)
+    text_results.configure(xscrollcommand=text_results_hsb.set)
+    text_results_vsb.pack(side=RIGHT, fill=Y)
+    text_results_hsb.pack(side=BOTTOM, fill=X)
+    text_results.pack(side=LEFT, fill=BOTH, expand=True)
+    text_results.tag_config('SUCCESS', font="bold", foreground="green")
+    text_results.tag_config('FAIL', foreground="orange")
+    text_results.tag_config('POSSIBLE', foreground="blue")
+    text_results.tag_config('DOWN', foreground="red")
+    text_results.tag_add('sel', '1.0')
 
     window.mainloop()
