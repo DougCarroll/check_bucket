@@ -7,12 +7,27 @@ import xml.etree.ElementTree as ET
 class CheckList(Frame):
     def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
         Frame.__init__(self, parent)
-        self.list = []
         row = 0
+        # When Select All button is selected, all checkboxes are selected
+        def selectAllCheckBoxes():
+            self.selectAll()
+        Button(self, text='ALL', command=selectAllCheckBoxes).grid(row=row, sticky=W)
+
+        # When Clear All button is selected, all checkboxes are deselected
+        def clearAllCheckBoxes():
+            self.deselectAll()
+        Button(self, text='CLR', command=clearAllCheckBoxes).grid(row=row, sticky=E)
+        row = row+1
+
+        self.list = []
+        self.chk = []
+        count = 0
         for pick in picks:
             var = IntVar()
-            chk = Checkbutton(self, text=pick, variable=var).grid(row=row, sticky=W)
+            self.chk.append(Checkbutton(self, text=pick, variable=var))
+            self.chk[count].grid(row=row, sticky=W)
             row = row+1
+            count= count+1
             self.list.append([var,pick])
     def selected(self):
         sList = []
@@ -20,7 +35,12 @@ class CheckList(Frame):
             if self.list[i][0].get() == 1:
                 sList.append(self.list[i][1])
         return sList
-
+    def selectAll(self):
+        for i in self.chk:
+            i.select()
+    def deselectAll(self):
+        for i in self.chk:
+            i.deselect()
 def checkBuckets(protocol):
     def displayResults(path, data, code, status):
         text_results.insert(END, path + ' : ' + code + ' : '+ data + '\n', status)
@@ -51,7 +71,6 @@ def checkBuckets(protocol):
             junk,namespace = namespace.split('{')
             namespace,junk = namespace.split('}')
             namespace = '{' + namespace + '}'
-            print(namespace)
 
             # Get the contents and display path in Contents Pane
             for contents in root.findall(namespace + 'Contents'):
@@ -72,7 +91,6 @@ if __name__ == '__main__':
 
     #Get the list of endpoints and create a CheckButton for each one
     #TODO: Add vertical scroll bar
-    #TODO: Add select all and clear all button
     endpoints = CheckList(window, list(REGIONS.endpoint))
     endpoints.pack(side=LEFT, fill=Y)
     endpoints.config(relief=GROOVE, bd=2)
