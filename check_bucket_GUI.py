@@ -26,6 +26,10 @@ def checkBuckets(protocol):
         text_results.insert(END, path + ' : ' + code + ' : '+ data + '\n', status)
         text_results.see(END)
         text_results.update()
+    def displayContents(path):
+        text_contents.insert(END, path + '\n')
+        text_contents.see(END)
+        text_contents.update()
 
     for ep in endpoints.selected():
         url = protocol + REGIONS.endpoint[ep] + '/' + entry_bucket.get()
@@ -40,6 +44,18 @@ def checkBuckets(protocol):
         if root.tag.__contains__("ListBucketResult"):
             code = 'JACKPOT'
             displayResults(url, "Give This URL a try!", code, 'SUCCESS')
+
+            # Get the namespace out of the XML 
+            # TODO: Messy way to do it, find a better way
+            namespace = str(root)
+            junk,namespace = namespace.split('{')
+            namespace,junk = namespace.split('}')
+            namespace = '{' + namespace + '}'
+            print(namespace)
+
+            # Get the contents and display path in Contents Pane
+            for contents in root.findall(namespace + 'Contents'):
+                displayContents(url + '/' + contents.find(namespace + "Key").text)
             continue
 
         code = root.find("Code").text        
@@ -82,6 +98,12 @@ if __name__ == '__main__':
     resultsFrame.pack(side=LEFT, fill=BOTH, expand=True)
     resultsFrame.config(relief=GROOVE, bd=2)
 
+    # contentsFrame is for displaying the contents of found bucket
+    # TODO: Add button to clear text
+    contentsFrame = Frame(window, relief=RAISED, bd=2)
+    contentsFrame.pack(side=LEFT, fill=BOTH, expand=True)
+    contentsFrame.config(relief=GROOVE, bd=2)
+
     entry_bucket = Entry(master=resultsFrame, width=40) 
     label_bucket = Label(master=resultsFrame, text="Bucket Name To Check For")
     entry_bucket.insert(0, 'public')
@@ -101,5 +123,15 @@ if __name__ == '__main__':
     text_results.tag_config('POSSIBLE', foreground="blue")
     text_results.tag_config('DOWN', foreground="red")
     text_results.tag_add('sel', '1.0')
+
+    text_contents = Text(master=contentsFrame, selectbackground="grey", wrap="none")
+    text_contents_vsb = Scrollbar(master=contentsFrame, orient="vertical", command=text_contents.yview)
+    text_contents_hsb = Scrollbar(master=contentsFrame, orient="horizontal", command=text_contents.xview)
+    text_contents.configure(yscrollcommand=text_contents_vsb.set)
+    text_contents.configure(xscrollcommand=text_contents_hsb.set)
+    text_contents_vsb.pack(side=RIGHT, fill=Y)
+    text_contents_hsb.pack(side=BOTTOM, fill=X)
+    text_contents.pack(side=LEFT, fill=BOTH, expand=True)
+    text_contents.tag_add('sel', '1.0')
 
     window.mainloop()
