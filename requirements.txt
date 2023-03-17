@@ -1,5 +1,1 @@
-sys
-getopt
 requests
-xml.etree.ElementTree
-tkinter
