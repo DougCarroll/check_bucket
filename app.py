@@ -1,13 +1,27 @@
-import sys
 from flask import Flask
 from flask import request
 from check_bucket import check_bucket
-
+from utils import toHTMLTable
+from utils import toLink
+   
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return app.send_static_file("index.html")
+    bucket = request.args.get("bucket", "")
+    if bucket:
+        protocol = request.args.get("protocol", "")
+        if protocol == "http":
+            proto = "-u"
+        else:
+            proto = "-s"
+
+        argList = [proto,bucket]
+        results = check_bucket(argList)
+        results = toLink(results)
+        return(toHTMLTable(results))
+    else:
+        return app.send_static_file("index.html")
 
 @app.route("/<bucket>")
 def search(bucket):
@@ -15,4 +29,4 @@ def search(bucket):
     #  an argument list to it
     argList = [bucket]
     results = check_bucket(argList)
-    return(str(results))
+    return(toHTMLTable(results))

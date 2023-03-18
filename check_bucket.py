@@ -34,7 +34,7 @@ def check_bucket(argv):
             protocol = 'https://'
             bucket = arg
 
-    rList = ["RESULTS"]
+    rList = []
 
     for key in cfg.endpoint:
         root = ''
