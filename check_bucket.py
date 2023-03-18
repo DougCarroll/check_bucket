@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 # Test Commit
 
-def main(argv):
+def check_bucket(argv):
     protocol = 'http://'
 
     try:
@@ -34,6 +34,8 @@ def main(argv):
             protocol = 'https://'
             bucket = arg
 
+    rList = ["RESULTS"]
+
     for key in cfg.endpoint:
         root = ''
         code = ''
@@ -44,14 +46,14 @@ def main(argv):
         try:
             r = requests.get(url, timeout=(3.05))
         except:
-            print(url + " : Server did not respond ")
+            rList.append(url + " : Server did not respond ")
             continue
 
         #print(cfg.endpoint["US_EAST_1"])
 
         root = ET.fromstring(r.text)
         if root.tag.__contains__("ListBucketResult"):
-            print(url + ' : ' + code + ' : JACKPOT, give this URL a try!!!')
+            rList.append(url + ' : ' + code + ' : JACKPOT, give this URL a try!!!')
             continue
         
         code = root.find("Code").text
@@ -60,9 +62,13 @@ def main(argv):
         #    print(child.tag, child.attrib, child.text)
         if code == "PermanentRedirect":
             redirect = root.find("Endpoint").text
-            print(url + ' : ' + code + ' to ' + redirect)
+            rList.append(url + ' : ' + code + ' to ' + redirect)
         else:
-            print(url + ' : ' + code)
+            rList.append(url + ' : ' + code)
+
+    return rList
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    results = check_bucket(sys.argv[1:])
+    for i in results:
+        print(i)
