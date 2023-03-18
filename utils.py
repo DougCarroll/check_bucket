@@ -11,7 +11,7 @@ def toLink(l):
     newList = []
     for i in l:
         j = i.split(" : ")
-        j[0] = "<link>" + j[0] + "</link>"
+        j[0] = "<a href=\"" + j[0] + "\">" + j[0] + "</a>"
         if len(j) == 2:
             newList.append(j[0] + " : " + j[1])     
         elif len(j) == 3:   
