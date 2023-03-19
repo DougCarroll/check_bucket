@@ -1,22 +1,55 @@
 <!DOCTYPE html>
+<head>
+  <style>
+    #contentDIV {
+      display: block;
+    }
+  
+    #loadingDIV {
+    width:  174px;
+    height: 174px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: wait;
+    display: none;
+    }
+  </style>
+</head>
+
 <html>
+
 <body>
 
-<h1>Bucket Search</h1>
+<div id="loadingDIV">
+  <h1>Loading....</h1>
+  <img src="/static/small_logo.jpeg" width="174">
+</div>
+<div id="contentDIV">
+  <h1>Bucket Search</h1>
 
-<p>Select HTTP or HTTPS, type in a bucket name to search for, and then Submit</p>
+  <p>Select HTTP or HTTPS, type in a bucket name to search for, and then Submit</p>
+  
+  <form action="" method="get">
+    <label for="protocol">Protocol:</label>
+    <select name="protocol" id="protocol">
+      <option value="http">HTTP</option>
+      <option value="https">HTTPS</option>
+    </select>
+    <br><br>
+    <label for="bucket">Bucket Name:</lable>
+    <input type="text" name="bucket">
+    <input type="submit" value="Search" onclick="loading();">
+  </form>
+</div>
 
-<form action="" method="get">
-  <label for="protocol">Protocol:</label>
-  <select name="protocol" id="protocol">
-    <option value="http">HTTP</option>
-    <option value="https">HTTPS</option>
-  </select>
-  <br><br>
-  <label for="bucket">Bucket Name:</lable>
-  <input type="text" name="bucket">
-  <input type="submit" value="Search">
-</form>
+<script>
+  function loading(){
+    var l = document.getElementById("loadingDIV");
+    l.style.display = "block";
+    var c = document.getElementById("contentDIV");
+    c.style.display = "none";
+  }
+</script>
 
 </body>
 </html>
