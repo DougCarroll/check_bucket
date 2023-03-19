@@ -1,13 +1,11 @@
-
 import sys
 import getopt
 import requests
-import regions as cfg
+import regions as regions
 import xml.etree.ElementTree as ET
 
-# Test Commit
-
 def check_bucket(argv):
+    # Default to HTTP if not specified
     protocol = 'http://'
 
     try:
@@ -34,22 +32,21 @@ def check_bucket(argv):
             protocol = 'https://'
             bucket = arg
 
+    # Loop through all of the endpoints, and check to see if there is a bucket
+    #  with the name passed in as an argument
     rList = []
-
-    for key in cfg.endpoint:
+    for key in regions.endpoint:
         root = ''
         code = ''
         redirect = ''
 
-        url = protocol + cfg.endpoint[key] + '/' + bucket
+        url = protocol + regions.endpoint[key] + '/' + bucket
         
         try:
-            r = requests.get(url, timeout=(3.05))
+            r = requests.get(url, timeout=5)
         except:
             rList.append(url + " : Server did not respond ")
             continue
-
-        #print(cfg.endpoint["US_EAST_1"])
 
         root = ET.fromstring(r.text)
         if root.tag.__contains__("ListBucketResult"):
@@ -58,8 +55,6 @@ def check_bucket(argv):
         
         code = root.find("Code").text
 
-        #for child in root:
-        #    print(child.tag, child.attrib, child.text)
         if code == "PermanentRedirect":
             redirect = root.find("Endpoint").text
             rList.append(url + ' : ' + code + ' to ' + redirect)
