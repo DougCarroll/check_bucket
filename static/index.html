@@ -1,5 +1,31 @@
 <!DOCTYPE html>
+
+<script type="text/javascript">// <![CDATA[
+  function loader(){
+      $("#loading").show();
+      $("#content").hide();       
+  }
+  window.onload = loader;
+// ]]></script>
+
 <html>
+
+<style>
+  div#content {
+    display: none;
+  }
+
+  div#loading {
+  top: 200 px;
+  margin: auto;
+  position: absolute;
+  z-index: 1000;
+  width: 160px;
+  height: 24px;
+  background: url(/static/lambert.jpg) no-repeat;
+  cursor: wait;
+  }
+</style>
 <body>
 
 <h1>Bucket Search</h1>
@@ -15,8 +41,11 @@
   <br><br>
   <label for="bucket">Bucket Name:</lable>
   <input type="text" name="bucket">
-  <input type="submit" value="Search">
+  <input type="submit" value="Search" onclick="loader();">
 </form>
+
+<div id="loading"></div>
+<div id="content">Loading.....</div>
 
 </body>
 </html>
