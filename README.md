@@ -18,4 +18,4 @@ https://dashboard.ngrok.com/get-started/your-authtoken
 
 `ngrok http 9000`
 
-5. Launch and run the app as normal. In addition to localhost, it will also be available at the Forwarded address setup by ngrock
+5. Launch and run the app as normal. In addition to localhost, it will also be available at the Forwarded address setup by ngrok
