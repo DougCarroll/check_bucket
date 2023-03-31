@@ -1,0 +1,58 @@
+<mxfile host="65bd71144e">
+    <diagram id="JFB4u1bZuXYO4_Axu5dQ" name="Page-1">
+        <mxGraphModel dx="969" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Host OS" style="whiteSpace=wrap;html=1;align=center;rounded=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="20" width="500" height="385" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Dev Container: Python 3" style="whiteSpace=wrap;html=1;align=center;rounded=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="90" width="270" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Flask app.py" style="whiteSpace=wrap;html=1;align=center;rounded=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="159" width="150" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="ngrok" style="whiteSpace=wrap;html=1;align=center;rounded=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="256" y="65.5" width="150" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="100" width="50" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/other/API_Proxy.svg;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="406" y="200" width="68" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Port 34739" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="209" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Port 9000" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="229" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="460" y="290" as="sourcePoint"/>
+                        <mxPoint x="510" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="ngrok.io" style="whiteSpace=wrap;html=1;align=center;rounded=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="64" width="90" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=-0.015;entryY=0.421;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#99CCFF;labelBackgroundColor=#99CCFF;fillColor=#1ba1e2;strokeColor=#006EAF;" edge="1" parent="1" source="14" target="7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="230" y="120" as="sourcePoint"/>
+                        <mxPoint x="300" y="250" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="330" y="120"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/other/API_Proxy.svg;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="101.5" width="68" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Port 443" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="110.5" width="70" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
