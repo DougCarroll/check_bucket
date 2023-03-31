@@ -6,7 +6,9 @@
 
 `brew install ngrok`
 
-2. Retrieve your Authtoken from ngrok by visiting https://dashboard.ngrok.com/get-started/your-authtoken
+2. Retrieve your Authtoken from ngrok by visiting 
+
+https://dashboard.ngrok.com/get-started/your-authtoken
 
 3. Add your Authtoken to the conguration file
 
